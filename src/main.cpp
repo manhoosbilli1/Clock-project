@@ -29,7 +29,6 @@ uint16_t second_now;
 int k;
 bool time_edit;
 
-
 void setup()
 {
   UP.begin();
@@ -162,9 +161,7 @@ void loop()
       if (k == 0 && Select.wasPressed()) //if state is zero and
       {
         bool second_flag = 1; //enter into a while loop only editing seconds
-        lcd.setCursor(0, 0);
-        lcd.print("Edit Seconds...");
-        delay(1000);
+        delay(10);
         while (second_flag == 1)
         {
           Down.read();
@@ -183,6 +180,8 @@ void loop()
             second_flag = 0; // exit the second connfiguring loop annd rememmbers the values set
             lcd.setCursor(0, 0);
             lcd.print("Saving...          ");
+            lcd.setCursor(0, 1);
+            lcd.print("                ");
             delay(500);
             lcd.clear();
           }
@@ -236,6 +235,8 @@ void loop()
             hour_flag = 0;
             lcd.setCursor(0, 0);
             lcd.print("Saving...          ");
+            lcd.setCursor(0, 1);
+            lcd.print("                ");
             delay(500);
             lcd.clear();
           }
@@ -268,12 +269,6 @@ void loop()
       //---------------------------------------minutes edit part------------------------
       else if (k == 1 && Select.wasPressed()) //if state is zero and
       {
-        lcd.setCursor(4, 0);
-        lcd.print(hour_now); //print the recorded time
-        lcd.print('/');
-        lcd.print(minute_now);
-        lcd.print('/');
-        lcd.print(second_now);
         bool minute_flag = 1; //enter into a while loop only editing seconds
         delay(10);
         while (minute_flag == 1)
@@ -294,6 +289,8 @@ void loop()
             minute_flag = 0; // exit the second connfiguring loop annd rememmbers the values set
             lcd.setCursor(0, 0);
             lcd.print("Saving...          ");
+            lcd.setCursor(0, 1);
+            lcd.print("                ");
             delay(500);
             lcd.clear();
           }
@@ -321,7 +318,7 @@ void loop()
           }
         }
       }
-      if (Select.pressedFor(3000))
+      if (Select.pressedFor(1000))
       {
         time_edit = false;
         state = 0;
