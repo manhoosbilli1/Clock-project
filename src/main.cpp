@@ -28,11 +28,7 @@ uint16_t minute_now;
 uint16_t second_now;
 int k;
 bool time_edit;
-//functions----------------------
 
-void set(); //sets time on rtc
-
-//end functions
 
 void setup()
 {
@@ -50,7 +46,6 @@ void setup()
     Serial.flush();
     abort();
   }
-
   if (!rtc.isrunning())
   {
     Serial.println("RTC is NOT running, let's set the time!");
